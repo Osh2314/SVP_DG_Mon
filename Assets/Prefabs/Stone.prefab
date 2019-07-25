@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4905195360354536213}
   - component: {fileID: 5201430217117612653}
   - component: {fileID: 2960424545946226451}
+  - component: {fileID: 189584054945536767}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: AttackObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,3 +129,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &189584054945536767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035167388279947423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7186e7d72be55043b47afa93b64b376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5

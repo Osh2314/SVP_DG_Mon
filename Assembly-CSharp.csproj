@@ -61,9 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\CameraMove.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Object\Core\Core.cs" />
+    <Compile Include="Assets\Scripts\Object\Enemy\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\Object\Enemy\EnemyMove.cs" />
+    <Compile Include="Assets\Scripts\Object\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Object\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Object\Player_Projectile\Player_Projectile.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/osh23/Documents/SVP_DG_Mon/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
