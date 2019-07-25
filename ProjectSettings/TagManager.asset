@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Platform
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -38,6 +41,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 831364907
+    locked: 0
+  - name: Platform
+    uniqueID: 893798019
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: AttackObject
+    uniqueID: 3970102459
     locked: 0
