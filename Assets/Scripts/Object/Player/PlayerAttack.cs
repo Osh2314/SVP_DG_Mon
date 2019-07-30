@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
             Rigidbody2D createdRigid;
             point = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.nearClipPlane));
 
-            Debug.Log(mousePos + " || " + point);
+           // Debug.Log(mousePos + " || " + point);
             if (transform.position.x - point.x >= 0)
                 createdObject = Instantiate(stonePrefab, new Vector3(transform.position.x - stonePrefab_SpownX, transform.position.y + stonePrefab_SpownY, 0), Quaternion.identity);
             else

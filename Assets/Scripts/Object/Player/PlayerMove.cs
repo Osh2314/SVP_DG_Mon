@@ -8,9 +8,10 @@ public class PlayerMove : MonoBehaviour
     public float origin_JumpForce;
 
 
+    private bool isDirRight = true;
     private float jumpForce;
     private bool cMove = true;
-    private bool cJump = true;
+    public bool cJump = true;
 
     private Rigidbody2D rigid;
 
@@ -32,6 +33,14 @@ public class PlayerMove : MonoBehaviour
             cJump = false;
         }
 
+        if(h >= 0) // 1이 왼쪽 0이 오른쪽
+        {
+            isDirRight = true;
+        }
+        else
+        {
+            isDirRight = false;
+        }
 
     }
 
@@ -48,4 +57,10 @@ public class PlayerMove : MonoBehaviour
             jumpForce = origin_JumpForce * 2;
         }
     }
+
+    public bool GetDirection() // Direction == 방향
+    {
+        return isDirRight;
+    }
+
 }
