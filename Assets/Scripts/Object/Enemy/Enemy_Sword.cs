@@ -6,58 +6,67 @@ public class Enemy_Sword : Enemy
 {
     //검을 쓰는 적의 스크립트이다.
     public GameObject sword;
-    public float attackAngle=40f;
+    public float attackAngle = 40f;
     public float attackAngleZ_Min = 240f;
     public float attackAngleZ_Max = 320f;
 
+    public bool cool = true;
+    public bool swordup = false;
     private Vector3 originalRotate;
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        originalRotate=sword.transform.localEulerAngles;
+        originalRotate = sword.transform.localEulerAngles;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("sword.transform.localEulerAngles.z : " + sword.transform.localEulerAngles.z);
     }
 
     public override IEnumerator State_Attack()
     {
-        bool swordup = false;
         state = State.ATTACK;
+        StartCoroutine("Atk");
 
+        yield break;
+    }
+
+    public IEnumerator Atk()
+    {
         while (state == State.ATTACK)
         {
-            if(swordup == true)
+            while (cool == true)
             {
-                if(sword.transform.localEulerAngles.z >= attackAngleZ_Max - 2)
+                //Debug.Log("아아");
+                if (swordup == true)
                 {
-                    swordup = false;
-                }
-                else
-                {
-                sword.transform.localEulerAngles += new Vector3(0, 0, attackAngle * Time.deltaTime);
-                }
-            }
-            else
-            {
-                if (sword.transform.localEulerAngles.z <= attackAngleZ_Min)
-                {
-                    swordup = true;
-                }
-                else
-                {
-                    sword.transform.localEulerAngles -= new Vector3(0, 0, attackAngle * Time.deltaTime);
-                }
-            }
-            //Debug.Log(Time.realtimeSinceStartup + " || " + "현재 ATTACK상태");
-            yield return null;
-        }
-        sword.transform.localEulerAngles = originalRotate;
+                    Debug.Log("업");
+                    sword.transform.localEulerAngles += new Vector3(0, 0, attackAngle * Time.deltaTime);
+                    if (sword.transform.localEulerAngles.z >= originalRotate.z)
+                    {
+                        swordup = false;
+                        cool = false;
 
+                    }
+                }
+                if (swordup == false)
+                {
+                Debug.Log("다운");
+                    sword.transform.localEulerAngles += new Vector3(0, 0, attackAngle * Time.deltaTime * -1);
+                    if(sword.transform.localEulerAngles.z <= attackAngleZ_Min)
+                    {
+                        swordup = true;
+                    }
+                }
+                yield return null;
+            }
+            sword.transform.localEulerAngles = originalRotate;
+            yield return new WaitForSeconds(5f);
+            cool = true;
+            //Debug.Log(Time.realtimeSinceStartup + " || " + "현재 ATTACK상태");
+        }
         yield break;
     }
 }

@@ -149,6 +149,10 @@ MonoBehaviour:
   state: 0
   sword: {fileID: 1735404274}
   attackAngle: 40
+  attackAngleZ_Min: 240
+  attackAngleZ_Max: 320
+  cool: 1
+  swordup: 0
 --- !u!50 &159567508
 Rigidbody2D:
   serializedVersion: 4

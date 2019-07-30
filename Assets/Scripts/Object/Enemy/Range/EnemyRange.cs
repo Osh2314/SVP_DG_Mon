@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyRange : MonoBehaviour
 {
     public GameObject Enemy;
+
+    Enemy enemy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemy = GetComponentInParent<Enemy>();
     }
 
     // Update is called once per frame
@@ -20,9 +22,8 @@ public class EnemyRange : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
      //   Debug.Log(collision.gameObject.name + "발견");
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Core")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Core" || enemy.state == global::Enemy.State.MOVE)
         {
-            Enemy enemy = GetComponentInParent<Enemy>();
             enemy.StartCoroutine(enemy.State_Attack());
         }
     }
@@ -30,9 +31,8 @@ public class EnemyRange : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
        // Debug.Log("Exit");
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Core")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Core" || enemy.state == global::Enemy.State.ATTACK)
         {
-            Enemy enemy = GetComponentInParent<Enemy>();
             enemy.StartCoroutine(enemy.State_Move());
         }
     }
