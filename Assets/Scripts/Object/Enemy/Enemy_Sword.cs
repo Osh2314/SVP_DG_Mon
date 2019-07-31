@@ -10,6 +10,7 @@ public class Enemy_Sword : Enemy
     public float attackAngleZ_Min = 240f;
     public float attackAngleZ_Max = 320f;
 
+    private int count = 0;
     public bool cool = true;
     public bool swordup = false;
     private Vector3 originalRotate;
@@ -29,7 +30,7 @@ public class Enemy_Sword : Enemy
     {
         state = State.ATTACK;
         StartCoroutine("Atk");
-
+        count++;
         yield break;
     }
 
@@ -63,8 +64,16 @@ public class Enemy_Sword : Enemy
                 yield return null;
             }
             sword.transform.localEulerAngles = originalRotate;
+            if(count >= 2)
+            {
+                count--;
+                yield break;
+            }
+            else
+            {
             yield return new WaitForSeconds(5f);
             cool = true;
+            }
             //Debug.Log(Time.realtimeSinceStartup + " || " + "현재 ATTACK상태");
         }
         yield break;
