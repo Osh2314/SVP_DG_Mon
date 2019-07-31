@@ -148,7 +148,7 @@ MonoBehaviour:
   speed: 3
   state: 0
   sword: {fileID: 1735404274}
-  attackAngle: 40
+  attackAngle: 500
   attackAngleZ_Min: 240
   attackAngleZ_Max: 320
   cool: 1

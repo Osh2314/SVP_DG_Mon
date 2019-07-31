@@ -6,7 +6,7 @@ public class Enemy_Sword : Enemy
 {
     //검을 쓰는 적의 스크립트이다.
     public GameObject sword;
-    public float attackAngle = 40f;
+    public float attackAngle;
     public float attackAngleZ_Min = 240f;
     public float attackAngleZ_Max = 320f;
 
