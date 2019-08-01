@@ -22,7 +22,7 @@ public class EnemyRange : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
      //   Debug.Log(collision.gameObject.name + "발견");
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Core" && enemy.state == global::Enemy.State.MOVE)
+        if (collision.gameObject.tag == "Player"&& enemy.state == global::Enemy.State.MOVE || collision.gameObject.tag == "Core" && enemy.state == global::Enemy.State.MOVE)
         {
             enemy.StartCoroutine(enemy.State_Attack());
         }
@@ -31,7 +31,7 @@ public class EnemyRange : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
        // Debug.Log("Exit");
-        if ((collision.gameObject.tag == "Player" || collision.gameObject.tag == "Core") && enemy.state == global::Enemy.State.ATTACK)
+        if ((collision.gameObject.tag == "Player" && enemy.state == global::Enemy.State.ATTACK || collision.gameObject.tag == "Core") && enemy.state == global::Enemy.State.ATTACK)
         {
             enemy.StartCoroutine(enemy.State_Move());
         }

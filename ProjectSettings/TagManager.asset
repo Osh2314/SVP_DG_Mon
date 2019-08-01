@@ -7,7 +7,6 @@ TagManager:
   - Floor
   - Platform
   - Enemy
-  - AttackObject
   - Core
   layers:
   - Default
@@ -57,4 +56,7 @@ TagManager:
     locked: 0
   - name: AttackObject
     uniqueID: 3970102459
+    locked: 0
+  - name: UI
+    uniqueID: 3510194067
     locked: 0

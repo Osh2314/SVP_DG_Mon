@@ -46,7 +46,8 @@ public abstract class Enemy : MonoBehaviour
     public IEnumerator State_Move()
     {
         state = State.MOVE;
-
+        Vector3 dir = GameManager.Instance.core.transform.position - transform.position;
+        dir.Normalize();
         //ThisAnimator.SetTrigger((int)State.IDLE);
 
         while (state == State.MOVE)
@@ -54,7 +55,7 @@ public abstract class Enemy : MonoBehaviour
             //플레이어
             if (GameManager.Instance.isGamePlaying == true)
             {
-                transform.Translate(speed * Time.deltaTime, 0, 0);
+                transform.Translate(dir*speed * Time.deltaTime);
                 //if()
             }
          //   Debug.Log(Time.realtimeSinceStartup + " || " + "현재 MOVE상태");

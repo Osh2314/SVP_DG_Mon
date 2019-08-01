@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Core : MonoBehaviour
 {
-    public float knockBackForce = 5;
+    //public float knockBackForce = 5;
     public int Hp
     {
         get
@@ -14,11 +14,12 @@ public class Core : MonoBehaviour
         set
         {
             hp = value;
+            GameManager.Instance.iBox.slider_CoreHp.value = hp;
             if (Hp <= 0)
             {
                 event_Death();
             }
-            Debug.Log(Hp);
+            Debug.Log(gameObject.name + " hp : "+Hp);
         }
     }
 
@@ -27,7 +28,8 @@ public class Core : MonoBehaviour
 
     void Start()
     {
-        
+        GameManager.Instance.iBox.slider_CoreHp.maxValue = hp;
+        GameManager.Instance.iBox.slider_CoreHp.value = hp;
     }
 
     // Update is called once per frame
@@ -36,19 +38,19 @@ public class Core : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            Rigidbody2D rigid = collision.gameObject.GetComponent<Rigidbody2D>();
-            Vector3 knockBackDir=new Vector3(collision.gameObject.transform.position.x-transform.position.x, 0, 0);
-            knockBackDir.Normalize();
-            rigid.AddForce(knockBackDir*knockBackForce);
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.tag == "Enemy")
+    //    {
+    //        Rigidbody2D rigid = collision.gameObject.GetComponent<Rigidbody2D>();
+    //        Vector3 knockBackDir=new Vector3(collision.gameObject.transform.position.x-transform.position.x, 0, 0);
+    //        knockBackDir.Normalize();
+    //        rigid.AddForce(knockBackDir*knockBackForce);
+    //    }
+    //}
 
     private void event_Death()
     {
-
+        Destroy(gameObject);
     }
 }

@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 event_Death();
             }
-            Debug.Log(Hp);
+            Debug.Log(gameObject.name+" hp : "+Hp);
         }
     }
 
