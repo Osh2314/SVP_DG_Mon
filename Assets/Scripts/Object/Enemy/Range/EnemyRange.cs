@@ -26,14 +26,29 @@ public class EnemyRange : MonoBehaviour
         {
             enemy.StartCoroutine(enemy.State_Attack());
         }
+
+        //if (collision.gameObject.tag == "Enemy")
+        //{
+        //    Enemy enemy2 = collision.gameObject.GetComponent<Enemy>();
+        //    if (enemy.state == global::Enemy.State.MOVE && enemy2.state == global::Enemy.State.ATTACK)
+        //    {
+        //        enemy.StartCoroutine(enemy.State_Idle());
+        //    }
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-       // Debug.Log("Exit");
+        Enemy enemy2 = collision.gameObject.GetComponent<Enemy>();
+        // Debug.Log("Exit");
         if ((collision.gameObject.tag == "Player" && enemy.state == global::Enemy.State.ATTACK || collision.gameObject.tag == "Core") && enemy.state == global::Enemy.State.ATTACK)
         {
             enemy.StartCoroutine(enemy.State_Move());
         }
+
+        //if(enemy2.state == global::Enemy.State.MOVE)
+        //{
+        //    enemy.StartCoroutine(enemy.State_Move());
+        //}
     }
 }
