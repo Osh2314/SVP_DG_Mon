@@ -55,7 +55,7 @@ public abstract class Enemy : MonoBehaviour
             //플레이어
             if (GameManager.Instance.isGamePlaying == true)
             {
-                transform.Translate(dir*speed * Time.deltaTime);
+                transform.Translate(new Vector3((dir*speed * Time.deltaTime).x, 0, 0));
                 //if()
             }
          //   Debug.Log(Time.realtimeSinceStartup + " || " + "현재 MOVE상태");

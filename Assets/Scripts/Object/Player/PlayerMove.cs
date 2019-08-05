@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     public enum STATE { IDLE, MOVE, INSTALLMODE, STOP, ATTACK, DEAD };
     public STATE state = STATE.IDLE;
 
-    private bool isDirRight = true;
+    private bool isSeeRight = true;
     private float jumpForce;
     private bool cMove = true;
     public bool cJump = true;
@@ -28,7 +28,8 @@ public class PlayerMove : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         if (cMove == false)
             return;
-        transform.Translate(h * speed * Time.deltaTime, 0, 0);
+        transform.position += new Vector3(h * speed * Time.deltaTime, 0, 0);
+        //transform.Translate(h * speed * Time.deltaTime, 0, 0);
 
         if (Input.GetKeyDown(KeyCode.Space) && cJump == true)
         {
@@ -45,13 +46,17 @@ public class PlayerMove : MonoBehaviour
 
             }
         }
-        if (h >= 0) // 1이 왼쪽 0이 오른쪽
+        if (h >0) // 1이 오른쪽 -1이 왼쪽
         {
-            isDirRight = true;
+            isSeeRight = true;
+            transform.localEulerAngles = new Vector3(0, 180, 0);
+           // transform.Rotate(new Vector3(0, 0, 0));
         }
-        else
+        if(h<0)
         {
-            isDirRight = false;
+            isSeeRight = false;
+            transform.localEulerAngles = new Vector3(0, 0, 0);
+            //transform.Rotate(new Vector3(0, 180, 0));
         }
 
     }
@@ -72,7 +77,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool GetDirection() // Direction == 방향
     {
-        return isDirRight;
+        return isSeeRight;
     }
 
     IEnumerator STATE_IDLE()

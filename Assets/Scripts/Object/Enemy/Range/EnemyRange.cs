@@ -46,7 +46,7 @@ public class EnemyRange : MonoBehaviour
             enemy.StartCoroutine(enemy.State_Move());
         }
 
-        //if(enemy2.state == global::Enemy.State.MOVE)
+        //if (enemy2.state == global::Enemy.State.MOVE)
         //{
         //    enemy.StartCoroutine(enemy.State_Move());
         //}
