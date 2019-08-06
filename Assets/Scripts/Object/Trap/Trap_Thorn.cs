@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Trap_Thorn : MonoBehaviour
 {
-
     public int damage = 30;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,4 +26,5 @@ public class Trap_Thorn : MonoBehaviour
             enemyHealth.Hp -= damage;
         }
     }
+
 }

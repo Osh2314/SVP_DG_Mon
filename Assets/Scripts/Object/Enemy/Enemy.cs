@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     public float speed;
-
+    public float spinforce = 10000;
     public enum State { IDLE, MOVE, STUN, ATTACK, DEAD};
     public State state = State.IDLE;
 
@@ -69,4 +69,19 @@ public abstract class Enemy : MonoBehaviour
         yield break;
     }
 
+    public IEnumerator State_Dead()
+    {
+        rigid.constraints = RigidbodyConstraints2D.None;
+        rigid.AddForce(new Vector3(-500, 600, spinforce));
+
+        float duration = 2.0f;
+        while (duration > 0) {
+            duration -= Time.deltaTime;
+
+            transform.localEulerAngles += new Vector3(0, 0, 300 * Time.deltaTime);
+            yield return null;
+        }
+        Destroy(gameObject);
+        yield break;
+    }
 }
