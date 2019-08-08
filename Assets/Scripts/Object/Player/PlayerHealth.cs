@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
         }
         set {
             hp = value;
-            GameManager.Instance.iBox.slider_PlayerHp.value = hp;
+            UIManager.Instance.slider_PlayerHp.value = hp;
             if (Hp <= 0)
             {
                 event_Death();
@@ -25,8 +25,8 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.iBox.slider_PlayerHp.maxValue = hp;
-        GameManager.Instance.iBox.slider_PlayerHp.value = hp;
+        UIManager.Instance.slider_PlayerHp.maxValue = hp;
+        UIManager.Instance.slider_PlayerHp.value = hp;
     }
 
     // Update is called once per frame

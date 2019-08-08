@@ -14,7 +14,7 @@ public class Core : MonoBehaviour
         set
         {
             hp = value;
-            GameManager.Instance.iBox.slider_CoreHp.value = hp;
+            UIManager.Instance.slider_CoreHp.value = hp;
             if (Hp <= 0)
             {
                 event_Death();
@@ -28,8 +28,8 @@ public class Core : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.iBox.slider_CoreHp.maxValue = hp;
-        GameManager.Instance.iBox.slider_CoreHp.value = hp;
+        UIManager.Instance.slider_CoreHp.maxValue = hp;
+        UIManager.Instance.slider_CoreHp.value = hp;
     }
 
     // Update is called once per frame
