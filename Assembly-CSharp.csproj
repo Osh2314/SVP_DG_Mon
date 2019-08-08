@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Object\Player\PlayerSkill1.cs" />
     <Compile Include="Assets\Scripts\Object\Trap\Trap_FootHold.cs" />
     <Compile Include="Assets\Scripts\Object\Trap\Trap_Thorn.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/osh23/Documents/SVP_DG_Mon/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
