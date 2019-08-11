@@ -7,13 +7,13 @@ public class PlayerSkill1 : MonoBehaviour
 {
     public float dashPower;
     private bool isDirRight;
-    private PlayerMove pm;
+    private Player pm;
     private PolygonCollider2D bc;
     private Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
     {
-        pm = GetComponent<PlayerMove>();
+        pm = GetComponent<Player>();
         bc = GetComponent<PolygonCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Ghost : MonoBehaviour
+public class PlayerAbility_Ghost : MonoBehaviour
 {
     public GameObject sword;
     public GameObject stonePrefab;

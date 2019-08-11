@@ -25,8 +25,8 @@ public class Enemy_AttackObject: MonoBehaviour
         if (collision.gameObject.tag == "Player" && canAttack == true)
         {
             Debug.Log("Hit!");
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            playerHealth.Hp -= damage;
+            Player player = collision.gameObject.GetComponent<Player>();
+            player.Hp -= damage;
             canAttack = false;
         }
         if (collision.gameObject.tag == "Core" && canAttack == true)

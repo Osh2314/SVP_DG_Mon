@@ -145,3 +145,4 @@ MonoBehaviour:
   canAttack: 1
   willInvisibleDestroy: 1
   willSuccessAttackDestroy: 0
+  willTouchedWallDestroy: 0

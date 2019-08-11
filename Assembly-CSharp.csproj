@@ -69,13 +69,14 @@
     <Compile Include="Assets\Scripts\Object\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Object\Enemy\EnemySpowner.cs" />
     <Compile Include="Assets\Scripts\Object\Enemy\Range\EnemyRange.cs" />
+    <Compile Include="Assets\Scripts\Object\Player\InstallObj_Rendering.cs" />
+    <Compile Include="Assets\Scripts\Object\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Object\Player\Player_AttackObject.cs" />
-    <Compile Include="Assets\Scripts\Object\Player\Player_Ghost.cs" />
-    <Compile Include="Assets\Scripts\Object\Player\PlayerHealth.cs" />
-    <Compile Include="Assets\Scripts\Object\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Object\Player\PlayerAbility_Ghost.cs" />
     <Compile Include="Assets\Scripts\Object\Player\PlayerSkill1.cs" />
     <Compile Include="Assets\Scripts\Object\Trap\Trap_FootHold.cs" />
     <Compile Include="Assets\Scripts\Object\Trap\Trap_Thorn.cs" />
+    <Compile Include="Assets\Scripts\UI\ObjectShop_ObjectBtn.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/user/Documents/SVP_DG_Mon/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

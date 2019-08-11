@@ -10,7 +10,6 @@ public abstract class Enemy : MonoBehaviour
     public State state = State.IDLE;
 
     private Rigidbody2D rigid;
-    private bool isSeeRight = true;
     
     // Start is called before the first frame update
     protected void Start()
