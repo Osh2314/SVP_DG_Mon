@@ -30,11 +30,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    [SerializeField]
     private int hp = 10;
     public bool isInstallMode = false;
+    
     //마우스를 따라다닐 sprite컴포넌트가 있는 오브젝트
     private GameObject mouseFollowObj;
+    //현재 셀렉중인 블록의 가격
     private bool isSeeRight = true;
     private float jumpForce;
     
@@ -55,8 +56,9 @@ public class Player : MonoBehaviour
             return;
         }
         float h = Input.GetAxis("Horizontal");
+       
         transform.position += new Vector3(h * speed * Time.deltaTime, 0, 0);
-        //transform.Translate(h * speed * Time.deltaTime, 0, 0);
+
 
         if (Input.GetKeyDown(KeyCode.Space) && cJump == true)
         {
@@ -81,7 +83,7 @@ public class Player : MonoBehaviour
             {
                 //설치를 구현하는 함수
                 tryInstallObj();
-                
+
             }
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
@@ -155,8 +157,6 @@ public class Player : MonoBehaviour
             mouseFollowObj.AddComponent<InstallObj_Rendering>();
         }
         mouseFollowObj.SetActive(true);
-        
-
     }
     public void setFalseInstallMode()
     {
@@ -165,8 +165,10 @@ public class Player : MonoBehaviour
     }
 
     private void tryInstallObj() {
-        if (mouseFollowObj.GetComponent<InstallObj_Rendering>().canInstall)
+        if (mouseFollowObj.GetComponent<InstallObj_Rendering>().canInstall &&
+            GameManager.Instance.Gold - UIManager.Instance.nowSelectObjInfo.nowSelectObjPrice>=0)
         {
+            GameManager.Instance.Gold -= UIManager.Instance.nowSelectObjInfo.nowSelectObjPrice;
             GameObject installedObj = Instantiate(mouseFollowObj, mouseFollowObj.transform.position, Quaternion.identity);
             Destroy(installedObj.GetComponent<InstallObj_Rendering>());
             installedObj.transform.parent = GameManager.Instance.platformData.transform;

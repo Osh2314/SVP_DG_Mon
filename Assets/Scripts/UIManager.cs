@@ -8,9 +8,22 @@ public class UIManager : MonoBehaviour
     public GameObject panel_Play_Pause;
     public Slider slider_PlayerHp;
     public Slider slider_CoreHp;
+    public Text text_GoldValue;
+
+    public Text text_SelectObjNameValue;
+    public Text text_SelectObjPriceValue;
+    public Image image_ObjectSprite;
+    public Text text_ObjToolTipValue;
 
     public int nowSaveFileSelectNum;
+    public struct NowSelectObjInfo {
+        public GameObject nowSelectObj;
+        public string nowSelectObjName;
+        public int nowSelectObjPrice;
+        public string nowSelectObjToolTip;
+    }
 
+    public NowSelectObjInfo nowSelectObjInfo;
     public static UIManager Instance
     {
         get
@@ -73,5 +86,24 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0;
     }
+
+    public void OnGoldChanged()
+    {
+        text_GoldValue.text = GameManager.Instance.Gold.ToString();
+    }
+    public void SetSelectObjInfo(GameObject selectObj, string selectObjName, int selectObjPrice,
+        string selectObjToolTip) {
+        //선택오브젝트 정보 구조체를 업데이트한다.
+        nowSelectObjInfo.nowSelectObj = selectObj;
+        nowSelectObjInfo.nowSelectObjName = selectObjName;
+        nowSelectObjInfo.nowSelectObjPrice = selectObjPrice;
+        nowSelectObjInfo.nowSelectObjToolTip = selectObjToolTip;
+
+        //선택오브젝트 정보 패널을 업데이트한다.
+        text_SelectObjNameValue.text = selectObjName;
+        text_SelectObjPriceValue.text = selectObjPrice.ToString();
+        image_ObjectSprite.sprite = selectObj.GetComponent<SpriteRenderer>().sprite;
+        text_ObjToolTipValue.text = selectObjToolTip;
+}
     //***************************************************************
 }
