@@ -7,10 +7,12 @@ public class EnemyRange : MonoBehaviour
     public GameObject Enemy;
 
     Enemy enemy;
+    Enemy_Archer eA;
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponentInParent<Enemy>();
+        eA = GetComponentInParent<Enemy_Archer>();
     }
 
     // Update is called once per frame
@@ -21,20 +23,31 @@ public class EnemyRange : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-     //   Debug.Log(collision.gameObject.name + "발견");
-        if (collision.gameObject.tag == "Player"&& enemy.state == global::Enemy.State.MOVE || collision.gameObject.tag == "Core" && enemy.state == global::Enemy.State.MOVE)
+        //   Debug.Log(collision.gameObject.name + "발견");
+        if (enemy.state == global::Enemy.State.MOVE || enemy.state == global::Enemy.State.ATTACK)
         {
-            enemy.StartCoroutine(enemy.State_Attack());
-        }
+            if (collision.gameObject.tag == "Player")
+            {
+                Vector3 colPos = collision.gameObject.transform.position;
+                eA.GetPlayerPosition(colPos);
+                enemy.StartCoroutine(enemy.State_Attack());
+            }
+            else if(collision.gameObject.tag == "Core")
+            {
+                Vector3 colPos = collision.gameObject.transform.position;
+                eA.GetPlayerPosition(colPos);
+                enemy.StartCoroutine(enemy.State_Attack());
+            }
 
-        //if (collision.gameObject.tag == "Enemy")
-        //{
-        //    Enemy enemy2 = collision.gameObject.GetComponent<Enemy>();
-        //    if (enemy.state == global::Enemy.State.MOVE && enemy2.state == global::Enemy.State.ATTACK)
-        //    {
-        //        enemy.StartCoroutine(enemy.State_Idle());
-        //    }
-        //}
+            //if (collision.gameObject.tag == "Enemy")
+            //{
+            //    Enemy enemy2 = collision.gameObject.GetComponent<Enemy>();
+            //    if (enemy.state == global::Enemy.State.MOVE && enemy2.state == global::Enemy.State.ATTACK)
+            //    {
+            //        enemy.StartCoroutine(enemy.State_Idle());
+            //    }
+            //}
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

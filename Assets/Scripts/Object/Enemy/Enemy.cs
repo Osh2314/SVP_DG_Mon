@@ -26,6 +26,7 @@ public abstract class Enemy : MonoBehaviour
         
     }
 
+
     public IEnumerator State_Idle() {
         state = State.IDLE;
 
@@ -84,4 +85,5 @@ public abstract class Enemy : MonoBehaviour
         Destroy(gameObject);
         yield break;
     }
+
 }
