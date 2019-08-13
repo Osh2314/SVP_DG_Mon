@@ -6,11 +6,11 @@ public abstract class Enemy : MonoBehaviour
 {
     public float speed;
     public float spinforce = 10000;
+    public int dropGoldValue = 10;
     public enum State { IDLE, MOVE, STUN, ATTACK, DEAD};
     public State state = State.IDLE;
 
     private Rigidbody2D rigid;
-    private bool isSeeRight = true;
     
     // Start is called before the first frame update
     protected void Start()
@@ -82,6 +82,7 @@ public abstract class Enemy : MonoBehaviour
             transform.localEulerAngles += new Vector3(0, 0, 300 * Time.deltaTime);
             yield return null;
         }
+        GameManager.Instance.Gold += dropGoldValue;
         Destroy(gameObject);
         yield break;
     }
